@@ -13,12 +13,29 @@ app.get("/message", (req, res) => {
 
 app.post("/save-data", async (req, res) => {
   try {
-    const receivedData = req.body.data; // Assuming your data is sent as { data: [...] }
-    await fs.writeFile("data1.json", JSON.stringify(receivedData));
+    for (let i = 0; i <= 8; i++) {
+      const receivedData = req.body.data[i]; // Assuming your data is sent as { data: [...] }
+      await fs.writeFile(`data${i}.json`, JSON.stringify(receivedData));
+    }
     res.json({ success: true });
   } catch (error) {
     console.error("Error saving data:", error);
     res.status(500).json({ success: false, error: "Internal Server Error" });
+  }
+});
+
+app.get("/data0.json", async (req, res) => {
+  try {
+    // Assuming data1.json is in the same directory as server.js
+    const filePath = "./data0.json";
+
+    // Read the content of data1.json and send it as the response
+    const data1Content = await fs.readFile(filePath, "utf-8");
+
+    res.json(JSON.parse(data1Content));
+  } catch (error) {
+    console.error("Error serving data0.json:", error);
+    res.status(500).json({ error: "Failed to serve data0.json" });
   }
 });
 
@@ -33,6 +50,98 @@ app.get("/data1.json", async (req, res) => {
   } catch (error) {
     console.error("Error serving data1.json:", error);
     res.status(500).json({ error: "Failed to serve data1.json" });
+  }
+});
+app.get("/data2.json", async (req, res) => {
+  try {
+    // Assuming data1.json is in the same directory as server.js
+    const filePath = "./data2.json";
+
+    // Read the content of data1.json and send it as the response
+    const data1Content = await fs.readFile(filePath, "utf-8");
+
+    res.json(JSON.parse(data1Content));
+  } catch (error) {
+    console.error("Error serving data2.json:", error);
+    res.status(500).json({ error: "Failed to serve data2.json" });
+  }
+});
+app.get("/data3.json", async (req, res) => {
+  try {
+    // Assuming data1.json is in the same directory as server.js
+    const filePath = "./data3.json";
+
+    // Read the content of data1.json and send it as the response
+    const data1Content = await fs.readFile(filePath, "utf-8");
+    res.json(JSON.parse(data1Content));
+  } catch (error) {
+    console.error("Error serving data3.json:", error);
+    res.status(500).json({ error: "Failed to serve data3.json" });
+  }
+});
+app.get("/data4.json", async (req, res) => {
+  try {
+    // Assuming data1.json is in the same directory as server.js
+    const filePath = "./data4.json";
+
+    // Read the content of data1.json and send it as the response
+    const data1Content = await fs.readFile(filePath, "utf-8");
+    res.json(JSON.parse(data1Content));
+  } catch (error) {
+    console.error("Error serving data4.json:", error);
+    res.status(500).json({ error: "Failed to serve data4.json" });
+  }
+});
+app.get("/data5.json", async (req, res) => {
+  try {
+    // Assuming data1.json is in the same directory as server.js
+    const filePath = "./data5.json";
+
+    // Read the content of data1.json and send it as the response
+    const data1Content = await fs.readFile(filePath, "utf-8");
+    res.json(JSON.parse(data1Content));
+  } catch (error) {
+    console.error("Error serving data5.json:", error);
+    res.status(500).json({ error: "Failed to serve data5.json" });
+  }
+});
+app.get("/data6.json", async (req, res) => {
+  try {
+    // Assuming data1.json is in the same directory as server.js
+    const filePath = "./data6.json";
+
+    // Read the content of data1.json and send it as the response
+    const data1Content = await fs.readFile(filePath, "utf-8");
+    res.json(JSON.parse(data1Content));
+  } catch (error) {
+    console.error("Error serving data6.json:", error);
+    res.status(500).json({ error: "Failed to serve data6.json" });
+  }
+});
+app.get("/data7.json", async (req, res) => {
+  try {
+    // Assuming data1.json is in the same directory as server.js
+    const filePath = "./data7.json";
+
+    // Read the content of data1.json and send it as the response
+    const data1Content = await fs.readFile(filePath, "utf-8");
+    res.json(JSON.parse(data1Content));
+  } catch (error) {
+    console.error("Error serving data7.json:", error);
+    res.status(500).json({ error: "Failed to serve data7.json" });
+  }
+});
+app.get("/data8.json", async (req, res) => {
+  try {
+    // Assuming data1.json is in the same directory as server.js
+    const filePath = "./data8.json";
+
+    // Read the content of data1.json and send it as the response
+    const data1Content = await fs.readFile(filePath, "utf-8");
+    res.json(JSON.parse(data1Content));
+  } catch (error) {
+    console.error("Error serving data8.json:", error);
+    res.status(500).json({ error: "Failed to serve data8.json" });
   }
 });
 

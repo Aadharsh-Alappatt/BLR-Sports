@@ -24,12 +24,24 @@ const Example = () => {
   }, []);
 
   const handleSaveData = () => {
+    const saveData = [
+      data1,
+      data2,
+      data3,
+      data4,
+      data5,
+      data6,
+      data7,
+      data8,
+      data9,
+    ];
     fetch("http://localhost:8000/save-data", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ data: data1 }),
+
+      body: JSON.stringify({ data: saveData }),
     })
       .then((res) => res.json())
       .then((result) => {
@@ -47,34 +59,135 @@ const Example = () => {
   useEffect(() => {
     const fetchData1 = () => {
       // Fetch data1.json from the server
-      fetch("http://localhost:8000/data1.json")
+      fetch("http://localhost:8000/data0.json")
         .then((res) => res.json())
         .then((fetchedData1) => {
           // Update the data1 state with the fetched data
           setData1(fetchedData1);
         })
         .catch((error) => {
+          console.error("Error fetching data0.json:", error);
+        });
+    };
+
+    const fetchData2 = () => {
+      // Fetch data1.json from the server
+      fetch("http://localhost:8000/data1.json")
+        .then((res) => res.json())
+        .then((fetchedData2) => {
+          // Update the data1 state with the fetched data
+          setData2(fetchedData2);
+        })
+        .catch((error) => {
           console.error("Error fetching data1.json:", error);
+        });
+    };
+    const fetchData3 = () => {
+      // Fetch data1.json from the server
+      fetch("http://localhost:8000/data2.json")
+        .then((res) => res.json())
+        .then((fetchedData3) => {
+          // Update the data1 state with the fetched data
+          setData3(fetchedData3);
+        })
+        .catch((error) => {
+          console.error("Error fetching data2.json:", error);
+        });
+    };
+    const fetchData4 = () => {
+      // Fetch data1.json from the server
+      fetch("http://localhost:8000/data3.json")
+        .then((res) => res.json())
+        .then((fetchedData4) => {
+          // Update the data1 state with the fetched data
+          setData4(fetchedData4);
+        })
+        .catch((error) => {
+          console.error("Error fetching data3.json:", error);
+        });
+    };
+    const fetchData5 = () => {
+      // Fetch data1.json from the server
+      fetch("http://localhost:8000/data4.json")
+        .then((res) => res.json())
+        .then((fetchedData5) => {
+          // Update the data1 state with the fetched data
+          setData5(fetchedData5);
+        })
+        .catch((error) => {
+          console.error("Error fetching data4.json:", error);
+        });
+    };
+    const fetchData6 = () => {
+      // Fetch data1.json from the server
+      fetch("http://localhost:8000/data5.json")
+        .then((res) => res.json())
+        .then((fetchedData6) => {
+          // Update the data1 state with the fetched data
+          setData6(fetchedData6);
+        })
+        .catch((error) => {
+          console.error("Error fetching data5.json:", error);
+        });
+    };
+    const fetchData7 = () => {
+      // Fetch data1.json from the server
+      fetch("http://localhost:8000/data6.json")
+        .then((res) => res.json())
+        .then((fetchedData7) => {
+          // Update the data1 state with the fetched data
+          setData7(fetchedData7);
+        })
+        .catch((error) => {
+          console.error("Error fetching data6.json:", error);
+        });
+    };
+    const fetchData8 = () => {
+      // Fetch data1.json from the server
+      fetch("http://localhost:8000/data7.json")
+        .then((res) => res.json())
+        .then((fetchedData8) => {
+          // Update the data1 state with the fetched data
+          setData8(fetchedData8);
+        })
+        .catch((error) => {
+          console.error("Error fetching data7.json:", error);
+        });
+    };
+    const fetchData9 = () => {
+      // Fetch data1.json from the server
+      fetch("http://localhost:8000/data8.json")
+        .then((res) => res.json())
+        .then((fetchedData9) => {
+          // Update the data1 state with the fetched data
+          setData9(fetchedData9);
+        })
+        .catch((error) => {
+          console.error("Error fetching data8.json:", error);
         });
     };
 
     // Call the fetchData1 function when the component mounts
     fetchData1();
+    fetchData2();
+    fetchData3();
+    fetchData4();
+    fetchData5();
+    fetchData6();
+    fetchData7();
+    fetchData8();
+    fetchData9();
   }, []); // Ensure the dependency array is empty to run only once when the component mounts
 
   const columns = useMemo<MRT_ColumnDef<Person>[]>(
     () => [
       {
-        accessorKey: "firstName",
-        header: "First Name",
+        accessorKey: "playerName",
+        header: "Player Name",
       },
       {
-        accessorKey: "lastName",
-        header: "Last Name",
-      },
-      {
-        accessorKey: "city",
-        header: "City",
+        accessorKey: "preference",
+        header: "Preference Sport",
       },
     ],
     []
@@ -96,6 +209,12 @@ const Example = () => {
 
   const [data2, setData2] = useState<Person[]>(() => []);
   const [data3, setData3] = useState<Person[]>(() => []);
+  const [data4, setData4] = useState<Person[]>(() => []);
+  const [data5, setData5] = useState<Person[]>(() => []);
+  const [data6, setData6] = useState<Person[]>(() => []);
+  const [data7, setData7] = useState<Person[]>(() => []);
+  const [data8, setData8] = useState<Person[]>(() => []);
+  const [data9, setData9] = useState<Person[]>(() => []);
 
   const [draggingRow, setDraggingRow] = useState<MRT_Row<Person> | null>(null);
   const [hoveredTable, setHoveredTable] = useState<string | null>(null);
@@ -122,11 +241,7 @@ const Example = () => {
       onDragEnd: () => {
         if (
           hoveredTable === "table-2" &&
-          !data2.find(
-            (d) =>
-              d.firstName === draggingRow!.original.firstName &&
-              d.lastName === draggingRow!.original.lastName
-          )
+          !data2.find((d) => d.playerName === draggingRow!.original.playerName)
         ) {
           setData2((data2) => [...data2, draggingRow!.original]);
 
@@ -137,13 +252,69 @@ const Example = () => {
           );
         } else if (
           hoveredTable === "table-3" &&
-          !data3.find(
-            (d) =>
-              d.firstName === draggingRow!.original.firstName &&
-              d.lastName === draggingRow!.original.lastName
-          )
+          !data3.find((d) => d.playerName === draggingRow!.original.playerName)
         ) {
           setData3((data3) => [...data3, draggingRow!.original]);
+          setData1((data1) =>
+            data1.map((person) =>
+              updateGamesPlayed(person, draggingRow!.original, 1)
+            )
+          );
+        } else if (
+          hoveredTable === "table-4" &&
+          !data4.find((d) => d.playerName === draggingRow!.original.playerName)
+        ) {
+          setData4((data4) => [...data4, draggingRow!.original]);
+          setData1((data1) =>
+            data1.map((person) =>
+              updateGamesPlayed(person, draggingRow!.original, 1)
+            )
+          );
+        } else if (
+          hoveredTable === "table-5" &&
+          !data5.find((d) => d.playerName === draggingRow!.original.playerName)
+        ) {
+          setData5((data5) => [...data5, draggingRow!.original]);
+          setData1((data1) =>
+            data1.map((person) =>
+              updateGamesPlayed(person, draggingRow!.original, 1)
+            )
+          );
+        } else if (
+          hoveredTable === "table-6" &&
+          !data6.find((d) => d.playerName === draggingRow!.original.playerName)
+        ) {
+          setData6((data6) => [...data6, draggingRow!.original]);
+          setData1((data1) =>
+            data1.map((person) =>
+              updateGamesPlayed(person, draggingRow!.original, 1)
+            )
+          );
+        } else if (
+          hoveredTable === "table-7" &&
+          !data7.find((d) => d.playerName === draggingRow!.original.playerName)
+        ) {
+          setData7((data7) => [...data7, draggingRow!.original]);
+          setData1((data1) =>
+            data1.map((person) =>
+              updateGamesPlayed(person, draggingRow!.original, 1)
+            )
+          );
+        } else if (
+          hoveredTable === "table-8" &&
+          !data8.find((d) => d.playerName === draggingRow!.original.playerName)
+        ) {
+          setData8((data8) => [...data8, draggingRow!.original]);
+          setData1((data1) =>
+            data1.map((person) =>
+              updateGamesPlayed(person, draggingRow!.original, 1)
+            )
+          );
+        } else if (
+          hoveredTable === "table-9" &&
+          !data9.find((d) => d.playerName === draggingRow!.original.playerName)
+        ) {
+          setData9((data9) => [...data9, draggingRow!.original]);
           setData1((data1) =>
             data1.map((person) =>
               updateGamesPlayed(person, draggingRow!.original, 1)
@@ -169,7 +340,7 @@ const Example = () => {
   const table1 = useMaterialReactTable({
     ...houseTableProps,
     data: data1,
-    getRowId: (originalRow) => `table-1-${originalRow.firstName}`,
+    getRowId: (originalRow) => `table-1-${originalRow.playerName}`,
   });
 
   const table2 = useMaterialReactTable({
@@ -179,7 +350,7 @@ const Example = () => {
     defaultColumn: {
       size: 100,
     },
-    getRowId: (originalRow) => `table-2-${originalRow.firstName}`,
+    getRowId: (originalRow) => `table-2-${originalRow.playerName}`,
     muiRowDragHandleProps: {
       onDragEnd: () => {
         if (hoveredTable === "table-1") {
@@ -215,7 +386,7 @@ const Example = () => {
     defaultColumn: {
       size: 100,
     },
-    getRowId: (originalRow) => `table-3-${originalRow.firstName}`,
+    getRowId: (originalRow) => `table-3-${originalRow.playerName}`,
     muiRowDragHandleProps: {
       onDragEnd: () => {
         if (hoveredTable === "table-1") {
@@ -244,6 +415,222 @@ const Example = () => {
     ),
   });
 
+  const table4 = useMaterialReactTable({
+    ...commonTableProps,
+    columns,
+    data: data4,
+    defaultColumn: {
+      size: 100,
+    },
+    getRowId: (originalRow) => `table-4-${originalRow.playerName}`,
+    muiRowDragHandleProps: {
+      onDragEnd: () => {
+        if (hoveredTable === "table-1") {
+          // setData1((data1) => [...data1]);
+          setData1((data1) =>
+            data1.map((person) =>
+              updateGamesPlayed(person, draggingRow!.original, -1)
+            )
+          );
+
+          setData4((data4) => data4.filter((d) => d !== draggingRow!.original));
+        }
+        setHoveredTable(null);
+      },
+    },
+    muiTablePaperProps: {
+      onDragEnter: () => setHoveredTable("table-4"),
+      sx: {
+        outline: hoveredTable === "table-4" ? "2px dashed pink" : undefined,
+      },
+    },
+    renderTopToolbarCustomActions: () => (
+      <Typography color="error.main" component="span" variant="h4">
+        Basketball
+      </Typography>
+    ),
+  });
+
+  const table5 = useMaterialReactTable({
+    ...commonTableProps,
+    columns,
+    data: data5,
+    defaultColumn: {
+      size: 100,
+    },
+    getRowId: (originalRow) => `table-5-${originalRow.playerName}`,
+    muiRowDragHandleProps: {
+      onDragEnd: () => {
+        if (hoveredTable === "table-1") {
+          // setData1((data1) => [...data1]);
+          setData1((data1) =>
+            data1.map((person) =>
+              updateGamesPlayed(person, draggingRow!.original, -1)
+            )
+          );
+
+          setData5((data5) => data5.filter((d) => d !== draggingRow!.original));
+        }
+        setHoveredTable(null);
+      },
+    },
+    muiTablePaperProps: {
+      onDragEnter: () => setHoveredTable("table-5"),
+      sx: {
+        outline: hoveredTable === "table-5" ? "2px dashed pink" : undefined,
+      },
+    },
+    renderTopToolbarCustomActions: () => (
+      <Typography color="error.main" component="span" variant="h4">
+        Badminton
+      </Typography>
+    ),
+  });
+
+  const table6 = useMaterialReactTable({
+    ...commonTableProps,
+    columns,
+    data: data6,
+    defaultColumn: {
+      size: 100,
+    },
+    getRowId: (originalRow) => `table-6-${originalRow.playerName}`,
+    muiRowDragHandleProps: {
+      onDragEnd: () => {
+        if (hoveredTable === "table-1") {
+          // setData1((data1) => [...data1]);
+          setData1((data1) =>
+            data1.map((person) =>
+              updateGamesPlayed(person, draggingRow!.original, -1)
+            )
+          );
+
+          setData6((data6) => data6.filter((d) => d !== draggingRow!.original));
+        }
+        setHoveredTable(null);
+      },
+    },
+    muiTablePaperProps: {
+      onDragEnter: () => setHoveredTable("table-6"),
+      sx: {
+        outline: hoveredTable === "table-6" ? "2px dashed pink" : undefined,
+      },
+    },
+    renderTopToolbarCustomActions: () => (
+      <Typography color="error.main" component="span" variant="h4">
+        Table Tennis
+      </Typography>
+    ),
+  });
+
+  const table7 = useMaterialReactTable({
+    ...commonTableProps,
+    columns,
+    data: data7,
+    defaultColumn: {
+      size: 100,
+    },
+    getRowId: (originalRow) => `table-7-${originalRow.playerName}`,
+    muiRowDragHandleProps: {
+      onDragEnd: () => {
+        if (hoveredTable === "table-1") {
+          // setData1((data1) => [...data1]);
+          setData1((data1) =>
+            data1.map((person) =>
+              updateGamesPlayed(person, draggingRow!.original, -1)
+            )
+          );
+
+          setData7((data7) => data7.filter((d) => d !== draggingRow!.original));
+        }
+        setHoveredTable(null);
+      },
+    },
+    muiTablePaperProps: {
+      onDragEnter: () => setHoveredTable("table-7"),
+      sx: {
+        outline: hoveredTable === "table-7" ? "2px dashed pink" : undefined,
+      },
+    },
+    renderTopToolbarCustomActions: () => (
+      <Typography color="error.main" component="span" variant="h4">
+        Chess
+      </Typography>
+    ),
+  });
+
+  const table8 = useMaterialReactTable({
+    ...commonTableProps,
+    columns,
+    data: data8,
+    defaultColumn: {
+      size: 100,
+    },
+    getRowId: (originalRow) => `table-8-${originalRow.playerName}`,
+    muiRowDragHandleProps: {
+      onDragEnd: () => {
+        if (hoveredTable === "table-1") {
+          // setData1((data1) => [...data1]);
+          setData1((data1) =>
+            data1.map((person) =>
+              updateGamesPlayed(person, draggingRow!.original, -1)
+            )
+          );
+
+          setData8((data8) => data8.filter((d) => d !== draggingRow!.original));
+        }
+        setHoveredTable(null);
+      },
+    },
+    muiTablePaperProps: {
+      onDragEnter: () => setHoveredTable("table-8"),
+      sx: {
+        outline: hoveredTable === "table-8" ? "2px dashed pink" : undefined,
+      },
+    },
+    renderTopToolbarCustomActions: () => (
+      <Typography color="error.main" component="span" variant="h4">
+        Carrom
+      </Typography>
+    ),
+  });
+
+  const table9 = useMaterialReactTable({
+    ...commonTableProps,
+    columns,
+    data: data9,
+    defaultColumn: {
+      size: 100,
+    },
+    getRowId: (originalRow) => `table-9-${originalRow.playerName}`,
+    muiRowDragHandleProps: {
+      onDragEnd: () => {
+        if (hoveredTable === "table-1") {
+          // setData1((data1) => [...data1]);
+          setData1((data1) =>
+            data1.map((person) =>
+              updateGamesPlayed(person, draggingRow!.original, -1)
+            )
+          );
+
+          setData9((data9) => data9.filter((d) => d !== draggingRow!.original));
+        }
+        setHoveredTable(null);
+      },
+    },
+    muiTablePaperProps: {
+      onDragEnter: () => setHoveredTable("table-9"),
+      sx: {
+        outline: hoveredTable === "table-9" ? "2px dashed pink" : undefined,
+      },
+    },
+    renderTopToolbarCustomActions: () => (
+      <Typography color="error.main" component="span" variant="h4">
+        Volleyball
+      </Typography>
+    ),
+  });
+
   return (
     <Box
       sx={{
@@ -256,7 +643,20 @@ const Example = () => {
     >
       <MaterialReactTable table={table1} />
       <MaterialReactTable table={table2} />
+
       <MaterialReactTable table={table3} />
+
+      <MaterialReactTable table={table4} />
+
+      <MaterialReactTable table={table5} />
+
+      <MaterialReactTable table={table6} />
+
+      <MaterialReactTable table={table7} />
+
+      <MaterialReactTable table={table8} />
+
+      <MaterialReactTable table={table9} />
       <button onClick={handleSaveData}>Save Data to Server</button>
     </Box>
   );
@@ -268,10 +668,7 @@ const updateGamesPlayed = (
   draggedPerson: Person,
   adjustment: number
 ): Person => {
-  if (
-    person.firstName === draggedPerson.firstName &&
-    person.lastName === draggedPerson.lastName
-  ) {
+  if (person.playerName === draggedPerson.playerName) {
     return { ...person, gamesPlayed: person.gamesPlayed + adjustment };
   }
   return person;
