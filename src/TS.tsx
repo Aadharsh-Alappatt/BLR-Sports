@@ -8,6 +8,7 @@ import {
 } from "material-react-table";
 import { Box, Typography } from "@mui/material";
 import { type Person } from "./makeData";
+import "./styles.css";
 
 const Example = () => {
   const [message, setMessage] = useState("");
@@ -641,22 +642,19 @@ const Example = () => {
         p: "4px",
       }}
     >
-      <MaterialReactTable table={table1} />
-      <MaterialReactTable table={table2} />
-
-      <MaterialReactTable table={table3} />
-
-      <MaterialReactTable table={table4} />
-
-      <MaterialReactTable table={table5} />
-
-      <MaterialReactTable table={table6} />
-
-      <MaterialReactTable table={table7} />
-
-      <MaterialReactTable table={table8} />
-
-      <MaterialReactTable table={table9} />
+      <Box className="full-width-table-container">
+        <MaterialReactTable table={table1} />
+      </Box>
+      <Box className="right-half-page">
+        <MaterialReactTable table={table2} />
+        <MaterialReactTable table={table3} />
+        <MaterialReactTable table={table4} />
+        <MaterialReactTable table={table5} />
+        <MaterialReactTable table={table6} />
+        <MaterialReactTable table={table7} />
+        <MaterialReactTable table={table8} />
+        <MaterialReactTable table={table9} />
+      </Box>
       <button onClick={handleSaveData}>Save Data to Server</button>
     </Box>
   );
