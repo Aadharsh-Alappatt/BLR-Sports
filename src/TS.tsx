@@ -636,7 +636,7 @@ const Example = () => {
     <Box
       sx={{
         display: "grid",
-        gridTemplateColumns: { xs: "auto", lg: "1fr 1fr" },
+        gridTemplateColumns: "1fr",
         gap: "1rem",
         overflow: "auto",
         p: "4px",
@@ -644,6 +644,9 @@ const Example = () => {
     >
       <Box className="full-width-table-container">
         <MaterialReactTable table={table1} />
+        <button onClick={handleSaveData} className="save-button">
+          Save Data to Server
+        </button>
       </Box>
       <Box className="right-half-page">
         <MaterialReactTable table={table2} />
@@ -655,7 +658,6 @@ const Example = () => {
         <MaterialReactTable table={table8} />
         <MaterialReactTable table={table9} />
       </Box>
-      <button onClick={handleSaveData}>Save Data to Server</button>
     </Box>
   );
 };

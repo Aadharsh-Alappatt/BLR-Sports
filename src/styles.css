@@ -1,16 +1,28 @@
-.full-width-table {
-    width: 100%;
+/* Ensure the table takes up 50% height and a fixed width */
+.full-width-table-container {
     height: 100%;
+    width: 50%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
   }
-   
+  
+  /* Apply styles to the right half of the page */
   .right-half-page {
-    width: 100%;
-  }
-   
-  .right-half-page {
+    margin-left: 50%; 
+    width: 50%; /* Adjust the width to fill the remaining space */
+    height: 100%;
+    overflow-y: auto;
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
     overflow: auto;
   }
-   
+  
+  /* Style the Save button */
+  .save-button {
+    margin-top: 1rem;
+  }
+  
